@@ -1,0 +1,264 @@
+/*******************************************************************************
+ *                                                                             *
+ * "White on Black" contrast theme.                                            *
+ *                                                                             *
+ ******************************************************************************/
+
+.root {
+    -fx-base: black;
+    -fx-background: -fx-base;
+    -fx-control-inner-background: -fx-base;
+    -fx-control-inner-background-alt: -fx-base;
+    -fx-faint-focus-color: -fx-accent;
+    -fx-hover-base: white;
+    -fx-pressed-base: derive(-fx-hover-base, -15%);
+    -fx-box-border: -fx-hover-base;
+    -fx-text-box-border: -fx-hover-base;
+    -fx-shadow-highlight-color: -fx-base;
+    -fx-outer-border: -fx-hover-base;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Font Weight                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.text,
+.text-input {
+    -fx-font-weight: bold;
+}
+.axis {
+    -fx-tick-label-font-weight: bold;
+}
+/*******************************************************************************
+ *                                                                             *
+ * ToggleButton                                                                *
+ *                                                                             *
+ ******************************************************************************/
+.toggle-button:selected,
+.toggle-button:selected:focused {
+    -fx-light-text-color: -fx-base;
+}
+.toggle-button:selected {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-hover-base, -fx-hover-base;
+}
+.toggle-button:selected:focused {
+    -fx-background-color: -fx-focus-color, -fx-hover-base, -fx-faint-focus-color, -fx-hover-base;
+}
+.toggle-button:selected:armed {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-hover-base, -fx-faint-focus-color, -fx-pressed-base;
+}
+.toggle-button:selected:focused:armed {
+    -fx-background-color: -fx-focus-color, -fx-hover-base, -fx-faint-focus-color, -fx-pressed-base;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Slider                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+.slider .thumb {
+    -fx-background-color: -fx-hover-base, -fx-hover-base, -fx-body-color;
+}
+.slider:focused .thumb {
+    -fx-background-color: -fx-focus-color, -fx-hover-base, -fx-body-color, -fx-faint-focus-color, -fx-body-color;
+}
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: -fx-outer-border, -fx-base, -fx-base;
+}
+.scroll-bar > .increment-button:hover,
+.scroll-bar > .decrement-button:hover {
+    -fx-background-color: -fx-outer-border, -fx-hover-base, -fx-hover-base;
+}
+.scroll-bar > .increment-button:hover > .increment-arrow,
+.scroll-bar > .decrement-button:hover > .decrement-arrow,
+.scroll-bar > .increment-button:hover:pressed > .increment-arrow,
+.scroll-bar > .decrement-button:hover:pressed > .decrement-arrow {
+    -fx-background-color: -fx-base, -fx-base;
+}
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: -fx-hover-base, -fx-hover-base;
+}
+.scroll-bar > .increment-button:hover:pressed,
+.scroll-bar > .decrement-button:hover:pressed {
+    -fx-background-color: -fx-outer-border, -fx-pressed-base, -fx-pressed-base;
+}
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow,
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow,
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-effect: null;
+}
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: -fx-outer-border, -fx-pressed-base, -fx-pressed-base;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * PopupMenu                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.context-menu {
+    -fx-background-color: -fx-hover-base, -fx-control-inner-background;
+}
+.context-menu > .scroll-arrow > .menu-up-arrow,
+.context-menu > .scroll-arrow > .menu-down-arrow {
+    -fx-background-color: -fx-hover-base;
+}
+/*******************************************************************************
+ *                                                                             *
+ * MenuBar                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+.menu-bar {
+    -fx-background-color: -fx-hover-base, -fx-base;
+    -fx-background-insets: 1 1 0 1, 1;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Menu                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+.menu-up-arrow, .menu-down-arrow {
+    -fx-effect: null;
+}
+/*******************************************************************************
+ *                                                                             *
+ * TabPane                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+.tab-header-area {
+    -fx-text-box-border: -fx-base;
+}
+.tab-pane > .tab-header-area > .headers-region > .tab:selected:hover {
+    -fx-background-color: white;
+}
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-width: 4;
+    -fx-border-color: -fx-focus-color;
+    -fx-border-insets: -4 -4 -7 -5;
+    -fx-border-radius: 1;
+}
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:bottom:selected .focus-indicator {
+    -fx-border-insets: -7 -5 -4 -4;
+}
+.tab-pane:bottom > .tab-header-area > .tab-header-background,
+.tab-pane:left > .tab-header-area > .tab-header-background,
+.tab-pane:right > .tab-header-area > .tab-header-background {
+    -fx-background-insets: 0, 0 0 1 0, 1;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TitledPane                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+.titled-pane > .title {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
+}
+.titled-pane:focused > .title {
+    -fx-background-color: -fx-faint-focus-color, -fx-focus-color, -fx-body-color;
+    -fx-background-insets: 0, 1, 4;
+}
+.titled-pane > .title:hover {
+    -fx-color: -fx-base;
+}
+.titled-pane > .title > .arrow-button > .arrow,
+.titled-pane:focused > .title > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-color;
+    -fx-background-insets: 0;
+    -fx-effect: null;
+}
+.titled-pane > .title:hover > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-highlight-color;
+    -fx-background-insets: 0;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Pagination                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+.pagination > .pagination-control > .control-box > .number-button:selected {
+    -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
+    -fx-text-fill: -fx-hover-base;
+}
+.pagination > .pagination-control > .control-box > .number-button:selected:hover:armed {
+    -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
+}
+.pagination > .pagination-control > .control-box > .number-button:selected:hover {
+    -fx-background-color: transparent, -fx-hover-base, -fx-hover-base, -fx-hover-base;
+    -fx-text-fill: -fx-dark-text-color;
+}
+.pagination > .pagination-control > .control-box > .bullet-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected:hover:armed {
+    -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Table Cells                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
+.tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
+    -fx-background-color: -fx-hover-base, -fx-background;
+}
+.table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.tree-table-view > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
+.tree-table-view > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
+    -fx-background-color: -fx-base, -fx-background;
+}
+/*******************************************************************************
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.table-view,
+.tree-table-view {
+    -fx-table-cell-border-color: derive(-fx-hover-base,-30%);
+}
+/*******************************************************************************
+ *                                                                             *
+ * Tooltip                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+.tooltip {
+    -fx-background-color: -fx-hover-base, rgba(30, 30, 30, 0.8);
+    -fx-background-radius: 6px, 5px;
+    -fx-background-insets: 0, 1;
+    -fx-font-size: 1em;
+    -fx-font-weight: bold;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Charts                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+.chart-legend {
+    -fx-background-color: -fx-hover-base, -fx-base;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 4, 3;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Axis                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+.axis {
+    AXIS_COLOR: -fx-light-text-color;
+    -fx-tick-label-fill: -fx-hover-base;
+}
+/*******************************************************************************
+ *                                                                             *
+ * ChartPlot                                                                   *
+ *                                                                             *
+ ******************************************************************************/
