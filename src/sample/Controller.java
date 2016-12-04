@@ -59,10 +59,34 @@ public class Controller implements Initializable {
     public TextField txFieldLBoundMem;
     public Tab tabMem;
 
- //////////////////////////////////////////////////
+ ///////////////////////////// Disk /////////////////////
+
+    public NumberAxis xAxisDisk;
+    public NumberAxis yAxisDisk;
+    public LineChart<Number, Number> chartDisk;
+    public XYChart.Series seriesDiskWrite = new XYChart.Series();
+    public XYChart.Series seriesDiskRead = new XYChart.Series();
+    public Tab tabDisk;
+    public Label labelDiskRead;
+    public Label labelDiskWrite;
+
+    //////////////////////////// Net ///////////////////////
+
+    public NumberAxis xAxisNet;
+    public NumberAxis yAxisNet;
+    public LineChart<Number, Number> chartNet;
+    public XYChart.Series seriesNetRec = new XYChart.Series();
+    public XYChart.Series seriesNetSend = new XYChart.Series();
+    public Tab tabNet;
+    public Label labelNetRec;
+    public Label labelNetSend;
+
+    //////////////////////////////////////////////////////////////
 
     static CPUUsage cpuUsage = new CPUUsage();
     static MemoryUsage memUsage = new MemoryUsage();
+    static DiskUsage diskUsage = new DiskUsage();
+    static NetUsage netUsage = new NetUsage();
     static Arrow arrowImg = new Arrow();
 
     @Override
@@ -103,6 +127,12 @@ public class Controller implements Initializable {
         chartCPU.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
         chartCPUDer.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
         chartCPUPrim.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
+
+        chartDisk.setAnimated(false);
+        chartDisk.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
+
+        chartNet.setAnimated(false);
+        chartNet.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), e -> dataUpdater()));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -177,9 +207,66 @@ public class Controller implements Initializable {
         }
     }
 
+    private void diskUpdate() {
+        if (!chartDisk.getData().isEmpty())
+            chartDisk.getData().clear();
+        if (!seriesDiskWrite.getData().isEmpty())
+            seriesDiskWrite.getData().clear();
+        if (!seriesDiskRead.getData().isEmpty())
+            seriesDiskRead.getData().clear();
+        for (int i = 0; i < 60; i++) {
+            seriesDiskWrite.getData().add(new XYChart.Data(i, diskUsage.getWriteElement(i)));
+            seriesDiskRead.getData().add(new XYChart.Data(i, diskUsage.getReadElement(i)));
+        }
+
+        chartDisk.getData().add(seriesDiskWrite);
+        chartDisk.getData().add(seriesDiskRead);
+
+        labelDiskRead.setText("Read: " + (int)diskUsage.getReadLastElement() + " kB/s");
+        labelDiskWrite.setText("Write: " + (int)diskUsage.getWriteLastElement() + " kB/s");
+
+        try {
+            diskUsage.Update();
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Error while getting Disk i/o info");
+            alert.showAndWait();
+        }
+    }
+
+    private void netUpdate() {
+        if (!chartNet.getData().isEmpty())
+            chartNet.getData().clear();
+        if (!seriesNetRec.getData().isEmpty())
+            seriesNetRec.getData().clear();
+        if (!seriesNetSend.getData().isEmpty())
+            seriesNetSend.getData().clear();
+        for (int i = 0; i < 60; i++) {
+            seriesNetRec.getData().add(new XYChart.Data(i, netUsage.getReceiveElement(i)));
+            seriesNetSend.getData().add(new XYChart.Data(i, netUsage.getSendElement(i)));
+        }
+
+        chartNet.getData().add(seriesNetRec);
+        chartNet.getData().add(seriesNetSend);
+
+        labelNetRec.setText("Receive: " + (int)netUsage.getLastReceiveElement() + " B/s");
+        labelNetSend.setText("Send: " + (int)netUsage.getLastSendElement() + " B/s");
+        try {
+            netUsage.Update();
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Error while getting Net send/receiving info");
+            alert.showAndWait();
+        }
+    }
+
     private void dataUpdater() {
         cpuUpdate();
         memUpdate();
+        diskUpdate();
+        netUpdate();
     }
 
     public void updateBoundsCPU() {

@@ -2581,7 +2581,7 @@ is being used to size a border should also be in pixels.
  ******************************************************************************/
 
 .chart-vertical-grid-lines {
-    -fx-line-
+
     -fx-stroke: green;
     -fx-stroke-width: 1px;
 }

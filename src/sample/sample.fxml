@@ -122,14 +122,38 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Disc">
+            <Tab fx:id="tabDisk" text="Disc">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane fx:id="panelDisk" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <LineChart fx:id="chartDisk">
+                          <xAxis>
+                            <NumberAxis side="BOTTOM" fx:id="xAxisDisk" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="yAxisDisk" side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <Label fx:id="labelDiskRead" layoutX="587.0" layoutY="41.0" text="Read" />
+                        <Label fx:id="labelDiskWrite" layoutX="587.0" layoutY="108.0" text="Write" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Network">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane fx:id = "panelNet" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <LineChart fx:id="chartNet">
+                          <xAxis>
+                            <NumberAxis fx:id="xAxisNet" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="yAxisNet" side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <Label fx:id="labelNetRec" layoutX="599.0" layoutY="49.0" text="Label" />
+                        <Label fx:id="labelNetSend" layoutX="599.0" layoutY="118.0" text="Label" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

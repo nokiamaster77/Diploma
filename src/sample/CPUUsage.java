@@ -1,38 +1,12 @@
 package sample;
 
-import org.hyperic.sigar.Sigar;
-
 /**
  * Created by Maksym on 9/30/2016.
  */
-public class CPUUsage {
-
-
-    final int size = 60;
-    private int [] arr;
-    private double [] derivative;
-    private Sigar sigar = new Sigar();
-    private double sum = 0;
-    private double []sumArr;
+public class CPUUsage extends Monitor{
 
     public CPUUsage() {
-        arr = new int[size];
-        derivative = new double[size];
-        sumArr = new double[size];
-
-        for (int i = 0; i < size; i++) {
-            arr[i] = 0;
-            derivative[i] = 0;
-            sumArr[i] = 0;
-        }
-    }
-
-    public int getElement(int i) throws IndexOutOfBoundsException {
-        return arr[i];
-    }
-
-    public double getDerElement(int i) throws IndexOutOfBoundsException {
-        return derivative[i];
+        super();
     }
 
     public void Update () throws Exception {
@@ -48,20 +22,5 @@ public class CPUUsage {
         sum += arr[arr.length-1];
         sumArr[sumArr.length-1] = sum;
 
-    }
-
-    public int getLastElement() {
-        return arr[arr.length-1];
-    }
-
-    public double getSumElement(int i)throws IndexOutOfBoundsException {
-        return sumArr[i];
-    }
-
-    public int getAverage() {
-        int avg = 0;
-        for (int i = arr.length - 1; i > arr.length - 3; i--)
-            avg += arr[i];
-        return avg / 2;
     }
 }
