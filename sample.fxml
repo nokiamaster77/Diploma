@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar VBox.vgrow="ALWAYS">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#aboutMenuOnAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+          <Tab fx:id="tabCPU" closable="false" text="CPU">
+            <content>
+              <AnchorPane fx:id="panelCPU" prefHeight="477.0" prefWidth="800.0">
+                     <children>
+                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="760.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox maxHeight="-Infinity" prefHeight="300.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox fx:id="hBoxCpuArrow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="64.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                             <children>
+                        
+                                                                  <Label fx:id="labelCPU" alignment="TOP_RIGHT" text="CPU: %" textFill="#48a0a1">
+                                                   <font>
+                                                      <Font name="Calibri" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox maxHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelWorkCpu" alignment="TOP_LEFT" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets right="10.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </HBox>
+                                          <LineChart fx:id="chartWorkCPU" animated="false" legendVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" title="Work estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                            <xAxis>
+                                              <NumberAxis animated="false" autoRanging="false" nodeOrientation="RIGHT_TO_LEFT" upperBound="60.0" fx:id="xAxisWorkCPU" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="yAxisWorkCPU" animated="false" autoRanging="false" minHeight="-Infinity" minorTickCount="0" minorTickLength="2.0" minorTickVisible="false" pickOnBounds="false" prefHeight="210.0" prefWidth="25.0" snapToPixel="false" tickLabelFill="#143911" tickLabelGap="5.0" tickLength="0.0" tickUnit="20.0" visible="false" />
+                                            </yAxis>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="160.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="vboxImgCpu" prefHeight="200.0" prefWidth="100.0" />
+                                          <TitledPane animated="false" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="160.0" text="Limits" VBox.vgrow="ALWAYS">
+                                            <content>
+                                              <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="156.0" prefWidth="158.0">
+                                                   <children>
+                                                      <TextField fx:id="txFieldUBoundCPU" layoutX="91.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="90" text="90" />
+                                                      <TextField fx:id="txFieldLBoundCPU" layoutX="91.0" layoutY="52.0" prefHeight="25.0" prefWidth="50.0" promptText="30" text="30" />
+                                                      <Label fx:id="lblOne" layoutX="16.0" layoutY="18.0" text="UpperBound" />
+                                                      <Label layoutX="17.0" layoutY="56.0" text="LowerBound" />
+                                                      <Button fx:id="okCPU" layoutX="91.0" layoutY="84.0" mnemonicParsing="false" onAction="#okBtnOnClick" prefHeight="25.0" prefWidth="50.0" text="Ok" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                             <VBox.margin>
+                                                <Insets bottom="35.0" />
+                                             </VBox.margin>
+                                          </TitledPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelSpeedCpu" text="Label">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartSpeedCPU" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Speed estimation" titleSide="BOTTOM">
+                                            <xAxis>
+                                              <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisSpeedCPU" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="yAxisSpeedCPU" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelIntCpu" text="Label">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartIntCPU" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Intensity estimation" titleSide="BOTTOM">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisIntCPU" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisIntCPU" minorTickLength="0.0" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabMem" closable="false" text="Memory">
+            <content>
+              <AnchorPane fx:id="panelMem" prefHeight="477.0" prefWidth="800.0">
+                     <children>
+                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="760.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox prefHeight="300.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox fx:id="hBoxMemArrow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="64.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="labelMem" alignment="TOP_RIGHT" text="Memory: %" textFill="#48a0a1">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox minWidth="-Infinity" prefHeight="100.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelWorkMem" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets right="10.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </HBox>
+                                          <LineChart fx:id="chartWorkMem" alternativeRowFillVisible="false" animated="false" createSymbols="false" legendVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" title="Work estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis autoRanging="false" nodeOrientation="RIGHT_TO_LEFT" upperBound="60.0" fx:id="xAxisWorkMem" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisWorkMem" animated="false" autoRanging="false" minHeight="-Infinity" minorTickCount="0" minorTickLength="2.0" minorTickVisible="false" pickOnBounds="false" prefHeight="210.0" prefWidth="25.0" snapToPixel="false" tickLabelFill="#143911" tickLabelGap="0.0" tickUnit="20.0" visible="false" />
+                                             </yAxis>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="160.0" HBox.hgrow="NEVER">
+                                       <children>
+                                          <VBox fx:id="vboxImgMem" prefHeight="200.0" prefWidth="100.0" />
+                                          <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="139.0" prefWidth="161.0" text="Limits">
+                                             <content>
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="112.0" prefWidth="150.0">
+                                                   <children>
+                                                      <TextField fx:id="txFieldUBoundMem" layoutX="91.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="90" text="90" />
+                                                      <TextField fx:id="txFieldLBoundMem" layoutX="91.0" layoutY="52.0" prefHeight="25.0" prefWidth="50.0" promptText="30" text="30" />
+                                                      <Label fx:id="lblOne1" layoutX="16.0" layoutY="18.0" text="UpperBound" />
+                                                      <Label layoutX="17.0" layoutY="56.0" text="LowerBound" />
+                                                      <Button fx:id="okMem" layoutX="91.0" layoutY="84.0" mnemonicParsing="false" onAction="#okBtnOnClick" prefHeight="25.0" prefWidth="50.0" text="Ok" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                             <VBox.margin>
+                                                <Insets bottom="40.0" />
+                                             </VBox.margin>
+                                          </TitledPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox minWidth="-Infinity" prefHeight="100.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelSpeedMem" text="Label">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartSpeedMem" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Speed estimation" titleSide="BOTTOM">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisSpeedMem" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisSpeedMem" side="LEFT" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox minWidth="-Infinity" prefHeight="100.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelIntMem" text="Label">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartIntMem" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Intensity estimation" titleSide="BOTTOM">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisIntMem" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisIntMem" side="LEFT" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tabDisk" closable="false" text="Disc">
+              <content>
+                <AnchorPane fx:id="panelDisk" prefHeight="477.0" prefWidth="800.0">
+                     <children>
+                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="760.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox prefHeight="300.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox fx:id="hBoxCpuArrow1" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="64.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="labelDisk" alignment="TOP_RIGHT" text="Read: Write:" textFill="#48a0a1">
+                                                   <font>
+                                                      <Font name="Calibri" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox maxHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelWorkDisk" alignment="TOP_LEFT" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets right="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <LineChart fx:id="chartWorkDisk" animated="false" legendVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" title="Work estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" nodeOrientation="RIGHT_TO_LEFT" upperBound="60.0" fx:id="xAxisWorkDisk" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisWorkDisk" animated="false" minHeight="-Infinity" minorTickCount="0" minorTickLength="2.0" minorTickVisible="false" pickOnBounds="false" prefHeight="210.0" prefWidth="25.0" snapToPixel="false" tickLabelFill="#143911" tickLabelGap="5.0" tickLength="0.0" tickUnit="20.0" visible="false" />
+                                             </yAxis>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="160.0" HBox.hgrow="NEVER">
+                                       <children>
+                                          <VBox fx:id="vboxImgCpu1" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox fx:id="hboxDiskRead" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label text="Read" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="hboxDiskWrite" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label text="Write" />
+                                                   </children>
+                                                </HBox>
+                                             </children></VBox>
+                                          <TitledPane animated="false" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="160.0" text="Limits" VBox.vgrow="NEVER">
+                                             <content>
+                                                <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="156.0" prefWidth="158.0">
+                                                   <children>
+                                                      <TextField fx:id="txFieldUBoundDisk" layoutX="91.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="90" text="90" />
+                                                      <TextField fx:id="txFieldLBoundDisk" layoutX="91.0" layoutY="52.0" prefHeight="25.0" prefWidth="50.0" promptText="30" text="30" />
+                                                      <Label fx:id="lblOne2" layoutX="16.0" layoutY="18.0" text="UpperBound" />
+                                                      <Label layoutX="17.0" layoutY="56.0" text="LowerBound" />
+                                                      <Button fx:id="okDisk" layoutX="91.0" layoutY="84.0" mnemonicParsing="false" onAction="#okBtnOnClick" prefHeight="25.0" prefWidth="50.0" text="Ok" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                             <VBox.margin>
+                                                <Insets bottom="35.0" />
+                                             </VBox.margin>
+                                          </TitledPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelSpeedDisk" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartSpeedDisk" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Speed estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisSpeedDisk" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisSpeedDisk" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelIntDisk" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartIntDisk" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Intensity estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisIntDisk" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisIntDisk" minorTickLength="0.0" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Network">
+              <content>
+                <AnchorPane fx:id="panelNet" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="760.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox prefHeight="300.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox fx:id="hBoxNetArrow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="64.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="labelNet" alignment="TOP_RIGHT" text="Receive: Send:" textFill="#48a0a1">
+                                                   <font>
+                                                      <Font name="Calibri" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox maxHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelWorkNet" alignment="TOP_LEFT" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets right="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <LineChart fx:id="chartWorkNet" animated="false" legendVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" title="Work estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" nodeOrientation="RIGHT_TO_LEFT" upperBound="60.0" fx:id="xAxisWorkNet" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisWorkNet" animated="false" minHeight="-Infinity" minorTickCount="0" minorTickLength="2.0" minorTickVisible="false" pickOnBounds="false" prefHeight="210.0" prefWidth="25.0" snapToPixel="false" tickLabelFill="#143911" tickLabelGap="5.0" tickLength="0.0" tickUnit="20.0" visible="false" />
+                                             </yAxis>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="160.0" HBox.hgrow="NEVER">
+                                       <children>
+                                          <VBox fx:id="vboxImgNet" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox fx:id="hboxNetRec" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label text="Receive" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="hboxNetSend" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label text="Send" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <TitledPane animated="false" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="160.0" text="Limits" VBox.vgrow="NEVER">
+                                             <content>
+                                                <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="156.0" prefWidth="158.0">
+                                                   <children>
+                                                      <TextField fx:id="txFieldUBoundNet" layoutX="91.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="90" text="90" />
+                                                      <TextField fx:id="txFieldLBoundNet" layoutX="91.0" layoutY="52.0" prefHeight="25.0" prefWidth="50.0" promptText="30" text="30" />
+                                                      <Label fx:id="lblOne21" layoutX="16.0" layoutY="18.0" text="UpperBound" />
+                                                      <Label layoutX="17.0" layoutY="56.0" text="LowerBound" />
+                                                      <Button fx:id="okNet" layoutX="91.0" layoutY="84.0" mnemonicParsing="false" onAction="#okBtnOnClick" prefHeight="25.0" prefWidth="50.0" text="Ok" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                             <VBox.margin>
+                                                <Insets bottom="35.0" />
+                                             </VBox.margin>
+                                          </TitledPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelSpeedNet" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartSpeedNet" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Speed estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisSpeedNet" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisSpeedNet" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="labelIntNet" contentDisplay="RIGHT" text="Label" textAlignment="RIGHT">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <LineChart fx:id="chartIntNet" animated="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" title="Intensity estimation" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                                             <xAxis>
+                                                <NumberAxis animated="false" autoRanging="false" minorTickLength="0.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="443.0" side="BOTTOM" tickLength="5.0" tickUnit="15.0" upperBound="60.0" fx:id="xAxisIntNet" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="yAxisIntNet" minorTickLength="0.0" side="LEFT" tickLength="0.0" tickUnit="0.0" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabDetails" text="Details">
+               <content>
+                  <AnchorPane fx:id="panelNet1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="766.0">
+                     <children>
+                        <TableView fx:id="tableDetails" prefHeight="500.0" prefWidth="760.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="columnProcess" editable="false" minWidth="-Infinity" prefWidth="50.0" text="Process" />
+                            <TableColumn fx:id="columnID" editable="false" minWidth="-Infinity" prefWidth="50.0" text="PID" />
+                              <TableColumn fx:id="columnCPU" editable="false" minWidth="-1.0" prefWidth="50.0" text="CPU, %" />
+                              <TableColumn fx:id="columnMem" editable="false" minWidth="-Infinity" prefWidth="50.0" text="Memory,  kB" />
+                              <TableColumn fx:id="columnCMD" editable="false" minWidth="-Infinity" prefWidth="50.0" text="CommandLine" />
+                          </columns>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TabPane>
+      <GridPane fx:id="statusBar" gridLinesVisible="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" valignment="BOTTOM" vgrow="NEVER" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="1.0" top="1.0" />
+         </VBox.margin>
+         <children>
+            <HBox fx:id="statBarCpuHbox" alignment="BOTTOM_LEFT" fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.hgrow="ALWAYS" />
+            <HBox fx:id="statBarMemHbox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+            <HBox fx:id="statBarDiskHbox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" />
+            <HBox fx:id="statBarNetHbox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" />
+            <HBox fx:id="statBarProcHbox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" />
+         </children>
+      </GridPane>
+   </children>
+</VBox>

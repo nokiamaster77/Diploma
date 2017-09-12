@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerProcessWindow">
+    <children>
+        <MenuBar VBox.vgrow="ALWAYS">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <HBox prefHeight="554.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox fx:id="vboxTable" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="tv" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="columnID" minWidth="-Infinity" prefWidth="87.0" text="PID" />
+                      <TableColumn fx:id="columnCpu" minWidth="-Infinity" prefWidth="87.0" text="CPU (%)" />
+                        <TableColumn fx:id="columnMem" minWidth="-Infinity" prefWidth="87.0" text="Mem (kB)" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TableView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="vboxCPU" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label fx:id="labelCPU" alignment="TOP_LEFT" contentDisplay="CENTER" text="CPU">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <LineChart fx:id="singleProcessChartCPU" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Value chart" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                      <NumberAxis fx:id="singleProcessxAxisCPU" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="singleProcessyAxisCPU" animated="false" autoRanging="false" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                    </yAxis>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </LineChart>
+                  <Label fx:id="labelCpuSum" text="Work: " VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <LineChart fx:id="singleProcessChartDerCPU" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Speed chart" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <xAxis>
+                        <NumberAxis fx:id="singleProcessxAxisDerCPU" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="singleProcessyAxisDerCPU" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                     </yAxis>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="40.0" />
+                     </VBox.margin>
+                  </LineChart>
+                  <Label fx:id="labelDerCpuSum" text="Sum:  ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <LineChart fx:id="singleProcessChartDer2CPU" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Intesity chart" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <xAxis>
+                        <NumberAxis fx:id="singleProcessxAxisDer2CPU" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="singleProcessyAxisDer2CPU" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                     </yAxis>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </LineChart>
+                  <Label fx:id="labelDer2CpuSum" text="Sum:  ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="vboxMem" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label fx:id="labelMem" alignment="TOP_CENTER" text="Memory">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <LineChart fx:id="singleProcessChartMem" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Value chart" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                      <NumberAxis fx:id="singleProcessxAxisMem" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="singleProcessyAxisMem" animated="false" autoRanging="false" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                    </yAxis>
+                  </LineChart>
+                  <Label fx:id="labelMemSum" text="Work: " VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <LineChart fx:id="singleProcessChartDerMem" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Speed chart" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                     <xAxis>
+                        <NumberAxis fx:id="singleProcessxAxisDerMem" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="singleProcessyAxisDerMem" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                     </yAxis>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="40.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </LineChart>
+                  <Label fx:id="labelDerMemSum" text="Sum:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <LineChart fx:id="singleProcessChartDer2Mem" alternativeRowFillVisible="false" animated="false" horizontalZeroLineVisible="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="248.0" title="Intensity chart" verticalZeroLineVisible="false">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <xAxis>
+                        <NumberAxis fx:id="singleProcessxAxisDer2Mem" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="3.0" minorTickVisible="false" nodeOrientation="RIGHT_TO_LEFT" side="BOTTOM" tickLabelGap="2.0" tickLength="2.0" tickMarkVisible="false" tickUnit="15.0" upperBound="60.0" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="singleProcessyAxisDer2Mem" forceZeroInRange="false" minorTickCount="25" minorTickVisible="false" side="LEFT" tickLabelGap="1.0" tickLength="2.0" tickMarkVisible="false" tickUnit="25.0" />
+                     </yAxis>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </LineChart>
+                  <Label fx:id="labelDer2MemSum" text="Sum:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children></HBox>
+    </children>
+</VBox>
